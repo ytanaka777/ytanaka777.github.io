@@ -1,5 +1,5 @@
 ::: {.lang .lang-ja}
-# 研究
+# 研究業績
 
 ## 論文
 1. *The Witten index for one-dimensional split-step quantum walks under the non-Fredholm condition,* Y. Matsuzawa, A. Suzuki, Y. Tanaka, N. Teranishi, K. Wada, Reviews in Mathematical Physics 35(06), 2023年6月30日(査読有り).  
