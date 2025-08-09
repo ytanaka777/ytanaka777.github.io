@@ -1,15 +1,125 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<title>$title$</title>
-  <meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/less@4.1.3/dist/less.min.js"></script>
-</head>
+  <meta charset="UTF-8" />
+  <title>読み込み中...</title>
+  <style>
+    /* テーマ変数（最小） */
+    :root { --bg: #fff; --fg: #000; color-scheme: light dark; }
+    [data-theme="dark"] { --bg: #111; --fg: #eee; }
 
+    .lang-ja, .lang-en { display: none; }
+    .lang-visible { display: block; }
+
+    body {
+      counter-reset: h2 h3;
+      margin: 0;
+      padding: 40px 16px;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    h2::before { counter-increment: h2; content: counter(h2) ". "; }
+    h3::before { counter-increment: h3; content: counter(h2) "." counter(h3) ". "; }
+
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: var(--bg);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 16px;
+    }
+    header nav a {
+      color: var(--fg);
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    /* ホバー時は色だけ変更（太字なし） */
+    header nav a:hover {
+      color: #007acc;
+    }
+
+    .controls { display: flex; align-items: center; gap: 8px; margin-right: 15px; }
+
+    #lang-select {
+      background: var(--bg);
+      color: var(--fg);
+       border: none; /* ← 枠線を削除 */
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    #theme-toggle {
+      background: none; border: none; cursor: pointer;
+      font-size: 1.2em; color: var(--fg);
+    }
+  </style>
+</head>
 <body>
+  <header>
+    <nav>
+      <!-- 日本語 -->
+      <span class="lang lang-ja">
+        <a href="./index.html">田中洋平のホームページ</a>
+        <a href="./web-cv.html">経歴書</a>
+        <a href="./web-research.html">研究業績</a>
+      </span>
+      <!-- 英語 -->
+      <span class="lang lang-en">
+        <a href="./index.html">Yohei Tanaka's Home Page</a>
+        <a href="./web-cv.html">CV</a>
+        <a href="./web-research.html">Research</a>
+      </span>
+    </nav>
+
+    <div class="controls">
+      <button id="theme-toggle" title="Toggle dark mode">☀</button>
+<select id="lang-select">
+ <option value="ja">🌐︎ Japanese</option>
+  <option value="en">🌐︎ English</option>
+</select>
+    </div>
+  </header>
 
   $body$
 
+  <script>
+    /* 言語切替 */
+    function switchLang(lang) {
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('.lang').forEach(el => el.classList.remove('lang-visible'));
+      document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('lang-visible'));
+      const h1 = document.querySelector('.lang-' + lang + ' h1');
+      if (h1) document.title = h1.textContent.trim();
+      localStorage.setItem('lang', lang);
+    }
+
+    /* テーマ適用 */
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('theme-toggle').textContent = (theme === 'dark' ? '☾' : '☀');
+      localStorage.setItem('theme', theme);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 言語の復元
+      const savedLang = localStorage.getItem('lang') || 'ja';
+      document.getElementById('lang-select').value = savedLang;
+      switchLang(savedLang);
+      document.getElementById('lang-select').addEventListener('change', e => switchLang(e.target.value));
+
+      // テーマの復元（なければOS設定）
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+      // クリックでテーマ切替
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const t = document.documentElement.getAttribute('data-theme');
+        applyTheme(t === 'dark' ? 'light' : 'dark');
+      });
+    });
+  </script>
 </body>
 </html>

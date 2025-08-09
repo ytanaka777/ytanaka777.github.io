@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>読み込み中...</title>
+  <style>
+    /* テーマ変数（最小） */
+    :root { --bg: #fff; --fg: #000; color-scheme: light dark; }
+    [data-theme="dark"] { --bg: #111; --fg: #eee; }
+
+    .lang-ja, .lang-en { display: none; }
+    .lang-visible { display: block; }
+
+    body {
+      counter-reset: h2 h3;
+      margin: 0;
+      padding: 40px 16px;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    h2::before { counter-increment: h2; content: counter(h2) ". "; }
+    h3::before { counter-increment: h3; content: counter(h2) "." counter(h3) ". "; }
+
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: var(--bg);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 16px;
+    }
+    header nav a {
+      color: var(--fg);
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    /* ホバー時は色だけ変更（太字なし） */
+    header nav a:hover {
+      color: #007acc;
+    }
+
+    .controls { display: flex; align-items: center; gap: 8px; margin-right: 15px; }
+
+    #lang-select {
+      background: var(--bg);
+      color: var(--fg);
+       border: none; /* ← 枠線を削除 */
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    #theme-toggle {
+      background: none; border: none; cursor: pointer;
+      font-size: 1.2em; color: var(--fg);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <!-- 日本語 -->
+      <span class="lang lang-ja">
+        <a href="./index.html">田中洋平のホームページ</a>
+        <a href="./web-cv.html">経歴書</a>
+        <a href="./web-research.html">研究業績</a>
+      </span>
+      <!-- 英語 -->
+      <span class="lang lang-en">
+        <a href="./index.html">Yohei Tanaka's Home Page</a>
+        <a href="./web-cv.html">CV</a>
+        <a href="./web-research.html">Research</a>
+      </span>
+    </nav>
+
+    <div class="controls">
+      <button id="theme-toggle" title="Toggle dark mode">☀</button>
+<select id="lang-select">
+ <option value="ja">🌐︎ Japanese</option>
+  <option value="en">🌐︎ English</option>
+</select>
+    </div>
+  </header>
+
+  <section id="経歴書" class="lang lang-ja">
+  <h1>経歴書</h1>
+  <h2 id="基本情報">基本情報</h2>
+  <ul>
+  <li>量子ウォークの不変量の研究をしています.</li>
+  </ul>
+  <h2 id="研究キーワード">研究キーワード</h2>
+  <ul>
+  <li>線形作用素の摂動論</li>
+  <li>スペクトルシフト関数</li>
+  <li>量子ウォーク</li>
+  </ul>
+  <h2 id="研究分野">研究分野</h2>
+  <ul>
+  <li>自然科学一般 / 数理物理、物性基礎 /</li>
+  <li>自然科学一般 / 数学基礎 /</li>
+  </ul>
+  <h2 id="経歴">経歴</h2>
+  <ul>
+  <li>2023年4月 - 2026年3月 学習院大学, 日本学術振興会 特別研究員
+  PD</li>
+  <li>2022年4月 - 2023年3月 信州大学, 日本学術振興会 特別研究員 PD
+  (学位取得による資格変更)</li>
+  <li>2020年4月 - 2022年3月 信州大学, 日本学術振興会 特別研究員 DC1</li>
+  </ul>
+  <h2 id="学歴">学歴</h2>
+  <ul>
+  <li>2020年4月 - 2022年3月 信州大学, 大学院総合医理工学研究科</li>
+  <li>2012年2月 - 2014年10月 Flinders University, Master of
+  Sciencce</li>
+  <li>2008年2月 - 2011年12月 Flinders University, Bachelor of
+  Science</li>
+  <li>2005年2月 - 2007年12月 Aberfoyle Park High School</li>
+  </ul>
+  <h2 id="受賞">受賞</h2>
+  <ul>
+  <li>2015年 Flinders University Research Scholarship, Flinders
+  University</li>
+  <li>2012年 University Medal, Flinders University</li>
+  <li>2012年 Flinders University Research Scholarship, Flinders
+  University</li>
+  </ul>
+  <h2 id="担当経験のある科目授業">担当経験のある科目(授業)</h2>
+  <ul>
+  <li>2022年9月 - 2023年2月 線形代数学II (SG302104)(信州大学)</li>
+  </ul>
+  <h2 id="所属学協会">所属学協会</h2>
+  <ul>
+  <li>日本数学会</li>
+  </ul>
+  <h2
+  id="共同研究競争的資金等の研究課題">共同研究・競争的資金等の研究課題</h2>
+  <ul>
+  <li><p>量子ウォークのスペクトル流:
+  散乱理論における新しい不変量の研究<br />
+  日本学術振興会 科学研究費助成事業 特別研究員奨励費<br />
+  2023年4月 - 2026年3月<br />
+  研究代表者：田中 洋平</p></li>
+  <li><p>量子ウォークの指数定理<br />
+  日本学術振興会 科学研究費助成事業 特別研究員奨励費<br />
+  2020年4月 - 2023年3月<br />
+  研究代表者：田中 洋平</p></li>
+  </ul>
+  </section>
+  <section id="cv" class="lang lang-en">
+  <h1>CV</h1>
+  <h2 id="basic-information">Basic Information</h2>
+  <ul>
+  <li>I conduct research on invariants of quantum walks.</li>
+  </ul>
+  <h2 id="research-keywords">Research Keywords</h2>
+  <ul>
+  <li>Perturbation theory of linear operators<br />
+  </li>
+  <li>Spectral shift function<br />
+  </li>
+  <li>Quantum walks</li>
+  </ul>
+  <h2 id="research-fields">Research Fields</h2>
+  <ul>
+  <li>General Natural Sciences / Mathematical Physics, Fundamental
+  Condensed Matter<br />
+  </li>
+  <li>General Natural Sciences / Fundamental Mathematics</li>
+  </ul>
+  <h2 id="professional-experience">Professional Experience</h2>
+  <ul>
+  <li>Apr 2023 – Mar 2026: Research Fellow (PD), Japan Society for the
+  Promotion of Science (JSPS), Gakushuin University<br />
+  </li>
+  <li>Apr 2022 – Mar 2023: Research Fellow (PD, status updated upon
+  degree completion), JSPS, Shinshu University<br />
+  </li>
+  <li>Apr 2020 – Mar 2022: Research Fellow (DC1), JSPS, Shinshu
+  University</li>
+  </ul>
+  <h2 id="education">Education</h2>
+  <ul>
+  <li>Apr 2020 – Mar 2022: Graduate School of Integrated Science and
+  Technology, Shinshu University<br />
+  </li>
+  <li>Feb 2012 – Oct 2014: Master of Science, Flinders University<br />
+  </li>
+  <li>Feb 2008 – Dec 2011: Bachelor of Science, Flinders
+  University<br />
+  </li>
+  <li>Feb 2005 – Dec 2007: Aberfoyle Park High School</li>
+  </ul>
+  <h2 id="awards">Awards</h2>
+  <ul>
+  <li>2015: Flinders University Research Scholarship, Flinders
+  University<br />
+  </li>
+  <li>2012: University Medal, Flinders University<br />
+  </li>
+  <li>2012: Flinders University Research Scholarship, Flinders
+  University</li>
+  </ul>
+  <h2 id="teaching-experience">Teaching Experience</h2>
+  <ul>
+  <li>Sep 2022 – Feb 2023: Linear Algebra II (SG302104), Shinshu
+  University</li>
+  </ul>
+  <h2 id="memberships">Memberships</h2>
+  <ul>
+  <li>Mathematical Society of Japan</li>
+  </ul>
+  <h2 id="research-projects-collaborative-competitive-funding">Research
+  Projects (Collaborative / Competitive Funding)</h2>
+  <ul>
+  <li><p><em>Spectral flow of quantum walks: A study on new invariants
+  in scattering theory</em><br />
+  JSPS KAKENHI (Grant-in-Aid for JSPS Fellows)<br />
+  Apr 2023 – Mar 2026<br />
+  Principal Investigator: Yohei Tanaka</p></li>
+  <li><p><em>Index theorem for quantum walks</em><br />
+  JSPS KAKENHI (Grant-in-Aid for JSPS Fellows)<br />
+  Apr 2020 – Mar 2023<br />
+  Principal Investigator: Yohei Tanaka</p></li>
+  </ul>
+  </section>
+
+  <script>
+    /* 言語切替 */
+    function switchLang(lang) {
+      document.documentElement.setAttribute('lang', lang);
+      document.querySelectorAll('.lang').forEach(el => el.classList.remove('lang-visible'));
+      document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.add('lang-visible'));
+      const h1 = document.querySelector('.lang-' + lang + ' h1');
+      if (h1) document.title = h1.textContent.trim();
+      localStorage.setItem('lang', lang);
+    }
+
+    /* テーマ適用 */
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.getElementById('theme-toggle').textContent = (theme === 'dark' ? '☾' : '☀');
+      localStorage.setItem('theme', theme);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 言語の復元
+      const savedLang = localStorage.getItem('lang') || 'ja';
+      document.getElementById('lang-select').value = savedLang;
+      switchLang(savedLang);
+      document.getElementById('lang-select').addEventListener('change', e => switchLang(e.target.value));
+
+      // テーマの復元（なければOS設定）
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+      // クリックでテーマ切替
+      document.getElementById('theme-toggle').addEventListener('click', () => {
+        const t = document.documentElement.getAttribute('data-theme');
+        applyTheme(t === 'dark' ? 'light' : 'dark');
+      });
+    });
+  </script>
+</body>
+</html>
